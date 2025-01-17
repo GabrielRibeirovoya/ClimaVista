@@ -1,19 +1,35 @@
-import requests
-import json
-from key import API_KEY
-from datetime import date
-from translate import Translator
+import Resquest.requestTime as requestTime
+import os
 
-city_name = 'São Paulo'
-API_KEY = 'a4ee089af1ce062e2040bd31f6a2633f'
-link = f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}'
-request = requests.get(link)
+def welcome(): 
+    os.system('cls')
+    print('Olá, seja bem-vindo ao serviços do ClimaVista!')
+    input('Digite qualquer tecla para começarmos!')
+    start_program()
 
-data = request.json()
+def get_formatting_choice(formatting):
 
-description = data['weather'][0]['description']
+    options = {
+        'C': 'Celsius',
+        'F': 'Fahrenheit',
+        'K': 'Kelvin'
+    }
 
-translator= Translator(to_lang="pt")
-desc = translator.translate(str(description))
+    if formatting in options:
+        return options[formatting]
+    else:
+        print('Opção inválida. Por favor, escolha uma das opções válidas: C, F ou K.')
+        input('Pressione qualquer tecla para tentar novamente.')
+        start_program()
 
-print(f'Em {city_name} - {date.today()}, o clima esta com {description}.')
+def start_program():
+    os.system('cls')
+    city = input('Insira a sua cidade: ')
+    formatting = get_formatting_choice(input("Escolha o formato da temperatura (C, F, K): "))
+
+    data = requestTime.request_city(city, formatting)
+    
+
+welcome()
+    
+
