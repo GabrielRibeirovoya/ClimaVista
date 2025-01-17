@@ -35,6 +35,7 @@ Com uma interface fácil de usar, o ClimaVista é ideal para quem deseja acompan
 ## Requisitos
 
 - **Python** O ClimaVista foi desenvolvido utilizando o versão 3.13.1.
+- **PowerShell** Para criação dos serviços de envio automatico.
 - **API Key da OpenWeatherMap:** Para usar a API de clima, será necessário registrar-se no [OpenWeatherMap](https://openweathermap.org/) e obter uma chave de API.
 
 ## Como Instalar
