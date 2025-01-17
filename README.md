@@ -42,4 +42,4 @@ Com uma interface fácil de usar, o ClimaVista é ideal para quem deseja acompan
 
 1. Faça o clone deste repositório para sua máquina local:
    ```bash
-   git clone https://github.com/seuusuario/ClimaVista.git
+   git clone https://github.com/GabrielRibeirovoya/ClimaVista.git
