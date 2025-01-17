@@ -3,6 +3,7 @@ import json
 import os
 from datetime import date
 from dotenv import load_dotenv
+from translate import Translator
 
 load_dotenv()
 
@@ -19,6 +20,7 @@ def kelvin_converter(kelvin, formatting):
     return formatting
 
 def request_city(city_name, formatting):
+    translator = Translator(to_lang="pt")
     link = f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}'
     request = requests.get(link)
     data = request.json()
@@ -26,6 +28,9 @@ def request_city(city_name, formatting):
     weather = data['weather'][0]['main']
     description = data['weather'][0]['description']
 
+    weather = translator.translate(weather)
+    description = translator.translate(description)
+    
     temp = data['main']['temp']
     temp = kelvin_converter(temp, formatting)
 
